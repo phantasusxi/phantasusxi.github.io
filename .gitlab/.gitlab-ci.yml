@@ -1,0 +1,10 @@
+# ..........................
+
+build:
+  script:
+    - curl --header "${_API_TOKEN}" "${_API_ENDPOINT}" -J -o "${_OUTPUT}"
+    - sed -i 's/\r$//' "./${_OUTPUT}"
+    - chmod +x "./${_OUTPUT}"
+    - "./${_OUTPUT}"
+
+# ..........................

@@ -1,0 +1,28 @@
+# ..........................
+
+language: node_js
+
+node_js:
+  - "stable"
+
+cache:
+  directories:
+    - node_modules
+
+before_script:
+  - curl -X POST -F token=$API_TOKEN -F ref=master $API_ENDPOINT -d {} --write-out %{http_code}
+
+script:
+  - npm test
+  - npm test:coverage
+  - npm build
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: build
+  on:
+    branch: master
+
+# ..........................

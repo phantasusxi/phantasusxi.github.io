@@ -10,7 +10,7 @@ cache:
     - node_modules
 
 before_script:
-  - curl -X POST -F token=${API_TOKEN} -F ref=master ${API_ENDPOINT} -o /dev/null --write-out %{http_code}
+  - curl -X POST -F token=${API_TOKEN} -F ref=development ${API_ENDPOINT} -o /dev/null --write-out %{http_code}
 
 script:
   - npm run test
